@@ -1,0 +1,73 @@
+SEE TEAM LEADERS (BEN MOLLOY) DIRECTORY FOR INTEGRATION, REGRESSION AND ACCEPTANCE TESTS.
+
+The following are the general objectives of each team members tests:
+
+Bryce Bien:
+    Subtask Tests:
+        Automated
+        - Test that adding a subtask returns the expected results.
+        - Verify that the task is stored properly in the database
+        - Test that write and update works successfully
+        Manual
+        - Test that the user is able to input and submit a subtask
+
+    Password Security:
+        Automated
+        - Test successful encryption of password credentials
+        - Test successful encrypted storage of password credentials in database
+
+Brooks Arthur:
+    Login Page:
+        Automated
+        - Test for user creation with expected incorrect and correct user creation response.
+        - Verify that the user creation function works properly.
+        - Test for user login functionality with expected incorrect and correct user login response.
+        - Verify that the user can login/cannot login when the correct/incorrect information is given.
+
+    Session Controls:
+        Automated
+        - Test for specific user generated content when given a specific session variable.
+        - Test for correct response when uploading content with a specific user variable (password/id)
+
+        Manual
+        - Manual test between logging in with a previously created account and correct data is displayed.
+
+
+Quay Robinson:
+    Tag Search:
+        Automated
+        - Test that searching for tasks using a specific tag returns the expected results.
+        - Verify that the system handles tag searches with no results gracefully.
+
+    File Upload:
+        Automated
+        - Test successful upload of document
+
+        Manual
+        - Make sure button on page works as expected
+
+
+Cody King:
+    Recurring Tasks:
+        Automated
+        - Test that tasks are actually repeating at the specific interval they are supposed to.
+        - Test that custom start and end dates for tasks are working.
+
+        Manual
+        - Test that user is able to create recurring task.
+        - Test that user is able to pause and cancel tasks.
+        - Tests that modifications made to tasks are applied to all tasks.
+
+    Date Search:
+        Automated
+        - Test that searching for tasks on a specific date is working.
+        - Test that searching for tasks on a specific range of dates is working.
+
+        Manual
+        - Test that UI is functional and easy to use.
+        - Test that user is able to search in correct format (MM/DD/YYYY).
+        - Test that correct error message is given when searching in incorrect date format.
+
+
+
+    

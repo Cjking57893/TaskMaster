@@ -1,0 +1,360 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #e27442;
+}
+
+.todo-container {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 20px;
+    width: 600px;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.todo {
+    width: 400px;
+}
+
+.todo-container h2 {
+    padding: 10px;
+    font-family: "Candal", sans-serif;
+    font-size: 2em;
+}
+
+.date-search-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.date-search-container button {
+    width: 25px;
+    margin-top: 5px;
+    align-self: center;
+}
+
+.todo-header input {
+    width: 92%;
+    border: none;
+    border-radius: 5px;
+    height: 20px;
+    font-family: "Candal", sans-serif;
+}
+
+.todo-header button {
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 5px;
+    font-family: "Candal", sans-serif;
+    background-color: rgb(51, 212, 100);
+}
+
+.todo-container ul {
+    list-style: none;
+
+}
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.todo-list-item {
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    font-family: "Candal", sans-serif;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.todo-list-item-upload {
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    font-family: "Candal", sans-serif;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.todo-list-item-content {
+    display: flex;
+    flex-direction: row;
+    min-width: 100%;
+    gap: 5px;
+    max-width: 110%;
+}
+
+.todo-list-item form {
+    width: 100%;
+    display: flex;
+}
+
+.todo-list-item input {
+    flex-grow: 2;
+    margin-right: 20px;
+    border: none;
+    border-radius: 5px;
+
+    font-family: "Candal", sans-serif;
+    max-width: 100px;
+    /* Set a max-width as per your preference */
+}
+
+.todo-list-item button {
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+    font-family: "Candal", sans-serif;
+    background-color: rgb(51, 212, 100);
+}
+.todo-list-item-tag-button {
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+    font-family: "Candal", sans-serif;
+    background-color: rgb(51, 212, 100);
+}
+.todo-list-item-tag {
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 2px;
+    font-family: "Candal", sans-serif;
+}
+
+.todo-list-item .cancel {
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+    font-family: "Candal", sans-serif;
+    background-color: rgb(223, 43, 43);
+    margin-left: 5px;
+}
+
+.todo-list-item div {
+    flex-grow: 2;
+}
+
+.todo-list-item .resume {
+    color: rgba(0, 255, 30, 0.673);
+    margin-right: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.todo-list-item .pause {
+    color: rgb(221, 255, 0);
+    margin-right: 5px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-list-item .complete {
+    color: rgb(0, 42, 141);
+    margin-right: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.todo-list-item .edit {
+    color: rgb(143, 233, 58);
+    margin-right: 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.todo-list-item .remove {
+    color: rgb(243, 96, 96);
+    margin-right: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    }
+    .dropdown {
+        display: inline-block;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: rgb(212, 212, 212);
+        min-width: 160px;
+        box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+    .dropdown-content td {
+        padding: 5px 10px 5px 10px;
+    }
+    .check-mark {
+        text-decoration: none;
+        color: rgb(212, 212, 212);
+    }
+    .check-mark:hover {
+        color: green;
+    }
+    .check-mark.active {
+        color: green;
+    }
+    .check-mark.active:hover {
+        color: red;
+    }
+    .dropdown:hover .dropdown-content {
+        display: inline-block;
+    }
+    .back-btn {
+        margin-top: 40px;
+        border-radius: 60px;
+        font-family: 'Candal', sans-serif;
+        color: #ffffff;
+        font-size: 15px;
+        background: #33d464;
+        padding: 10px 20px 10px 20px;
+        text-decoration: none;
+    }
+    .todo-list-item-progress {
+        border: none;
+        font-family: 'Candal', sans-serif;
+        display: flex;
+        align-items: center;
+    }
+    .todo-list-item-progress span {
+        padding-right: 5px;
+    }
+
+.login-container {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    width: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    text-align: center;
+}
+
+.login-container h2 {
+    font-family: "Candal", sans-serif;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    font-family: "Candal", sans-serif;
+}
+
+.login-form button {
+    width: 100%;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    font-family: "Candal", sans-serif;
+    background-color: rgb(51, 212, 100);
+}
+.login-form button:hover {
+    background-color: rgb(26, 138, 65);
+}
+
+.create-account-toggle {
+    width: 100%;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    margin-top: 5px;
+    font-family: "Candal", sans-serif;
+    background-color: rgb(36, 192, 231);
+}
+.create-account-toggle:hover {
+    background-color: rgb(25, 136, 164);
+}
+
+.recurring-label {
+    text-align: center;
+    padding-top: 5px;
+}
+
+.pause-and-resume-buttons {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.recurring-task-checkbox-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.recurring-task-options-container {
+    display: none;
+}
+
+.recurring-task-frequency-and-interval-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.recurring-task-frequency-and-interval-container-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.recurring-task-frequency-and-interval-container-item > select {
+    width: 80px;
+    box-sizing: border-box;
+}
+
+.recurring-task-frequency-and-interval-container-item > input {
+    width: 80px;
+    box-sizing: border-box;
+}
+
+.recurring-task-startby-and-endby-container {
+    display: flex;
+    flex-direction: column;
+}
+

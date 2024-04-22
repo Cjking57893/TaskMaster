@@ -1,0 +1,32 @@
+{
+  "name": "todo_js_mongodb",
+  "version": "1.0.0",
+  "description": "https://medium.com/@diogo.fg.pinheiro/simple-to-do-list-app-with-node-js-and-mongodb-chapter-1-c645c7a27583",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --",
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cloc": "^2.0.0-cloc",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "ejs-lint": "^2.0.0",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "mongodb": "^5.0.1",
+    "mongoose": "^7.6.11",
+    "multer": "^1.4.5-lts.1",
+    "node": "^18.20.2",
+    "node-fetch": "^3.3.2",
+    "nodemon": "^3.1.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.4"
+  }
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Todo App</title>
+  <%- include('common_head.ejs') %>
+</head>
+
+<body>
+<div class="todo-container">
+<h2>To-Do List</h2>
+<div class="tag-and-date-search-buttons">
+<button  class="todo-list-item-tag-button" onclick="window.location.href='/date'">Search By Date</button>
+<button  class="todo-list-item-tag-button" onclick="window.location.href='/tag'">Search On Tag</button>
+<button  class="todo-list-item-tag-button" onclick="window.location.href='/'">Remove Search</button>
+<button  class="todo-list-item-tag-button" onclick="window.location.href='/fileView'">View Files for Tasks</button>
+</div>
+<h3>Username: <%- user %></h3>
+<button  class="todo-list-item-tag-button" onclick="window.location.href='/login/logout'">Log Out</button>
+<div class="todo">
+
+      <form action="/" method="POST" class="todo-header">
+        <input type="text" name="title">
+        <button type="submit"><span class="fas fa-plus"></span></button>
+        <div class="recurring-task-container">
+          <div class="recurring-task-checkbox-container">
+            <label for="recurring-task-checkbox">Recurring Task?</label>
+            <input type="checkbox" id="recurring-task-checkbox" name="isRecurring" value="true">
+          </div>
+          <div class="recurring-task-options-container">
+            <div class="recurring-task-frequency-and-interval-container">
+              <div class="recurring-task-frequency-and-interval-container-item">
+                <label for="frequency" id="frequencyLabel">*Frequency</label>
+                <select name="frequency" id="frequency">
+                  <option value="daily">Daily</option>
+                  <option value="weekly">Weekly</option>
+                  <option value="monthly">Monthly</option>
+                  <option value="yearly">Yearly</option>
+                </select>
+              </div>
+              <div class="recurring-task-frequency-and-interval-container-item">
+                <label for="interval">*Interval</label>
+                <input type="number" id="interval" name="interval" min="1" value="1">
+              </div>
+            </div>
+            <div class="recurring-task-startby-and-endby-container">
+              <div class="recurring-task-startby-and-endby-container-item">
+                <label for="startBy">*Start Date</label>
+                <input type="date" id="startBy" name="startBy" value="<%= new Date().toLocaleDateString('en-CA') %>">
+              </div>
+              <div class="recurring-task-startby-and-endby-container-item">
+                <label for="endBy">End Date</label>
+                <input type="date" id="endBy" name="endBy">
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+<ul class="todo-list">
+  <% todoTasks.forEach(details => {
+    if (details.isVisible) { %>
+<li class="todo-list-item" data-paused="<%= details.recurrence.isPaused %>">
+  <div class="todo-list-item-content">
+  <a data-id="<%= details._id %>" class="complete">
+    <span class="fas fa-check"></span>
+  </a>
+  <div class="todo-list-item-name"><%= details.title %></div>
+  <div class="todo-list-item-date"><%= details.date.toISOString().split('T')[0] %></div>
+  <div class="todo-list-item-tag"><%= details.tag %></div>
+  <div class="dropdown">
+    <a href="/subtask/<%= details._id %>"><button>SubTasks</button></a>
+    <table class="dropdown-content">
+      <% if(details.subtasks.length > 0){
+        details.subtasks.forEach(subtask => { %>
+      <tr><td><%= subtask.subtaskTitle %></td><td><a href="/subtaskComplete/<%= subtask._id %>" class="fas fa-check check-mark <% if(subtask.subtaskCompleted) {%>active<%} %>"></a></td></tr>
+      <% })} else { %>
+      <td>No Subtasks Added</td>
+      <% } %>
+    </table>
+  </div>
+  <a href="/edit/<%= details._id %>" class="edit">
+    <span class="fas fa-edit"></span>
+  </a>
+  <a href="/remove/<%= details._id %>" class="remove">
+    <span class="fas fa-times"></span>
+  </a>
+  </div>
+  <% if (details.isRecurring) { %>
+    <div class="recurring-label">Recurring <%= details.recurrence.frequency.charAt(0).toUpperCase() +
+      details.recurrence.frequency.slice(1) %>
+    </div>
+    <div class="pause-and-resume-buttons">
+      <% if (details.isRecurring) { if (details.recurrence.isPaused) { %> <a data-id="<%= details._id %>"
+          class="resume"><i class="fas fa-solid fa-play"></i></a>
+      <% } else { %> <a data-id="<%= details._id %>" class="pause"><i class="fas fa-solid fa-pause"></i></a>
+        <% } } %>
+      </div>
+      <% } %>
+<% } %>
+  <% const completedSubtasks = details.subtasks.filter(subtask => subtask.subtaskCompleted).length;
+     const totalSubtasks = details.subtasks.length;
+     const percent = ((completedSubtasks / totalSubtasks) * 100).toFixed(2);
+     if (!isNaN(percent)) { %>
+    <div class="todo-list-item-progress">
+      <span>Task Progress:</span>
+      <progress value="<%= completedSubtasks %>" max="<%= totalSubtasks %>"></progress>
+      <span style="margin-left: 10px"><%= percent %>%</span>
+    </div>
+  <% } %>
+    </li>
+    <% }   );%>
+      </ul>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/static/js/taskManagement.js"></script>
+<script src="/static/js/recurringTaskOptions.js"></script>
+
+</body>
